@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temp-One</title>
+    <style>
+                @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+
+        body {
+        font-family: 'Pixelify Sans', sans-serif;
+        font-weight: 100; /* thinner */
+        background-color: #121052;
+        background: linear-gradient(180deg,rgba(18, 16, 82, 1) 50%, rgb(168, 95, 207) 100%);
+        background-repeat: no-repeat;
+        color:white;
+        height:3500px;
+        margin:0;
+        }
+
+#banner{
+    
+    background-color: rgb(246, 214, 188);
+    max-width: 100%;
+    height:100px;
+    display: flex;
+
+}
+
+        button{
+            margin-left: auto;
+            margin-right:30px ;
+            margin-top: 15px;
+             padding:9px;
+            max-width: max-content;
+            max-height: max-content;
+            background-color: #B3ACFA;
+            color:#121052;
+            border-radius: 5px;
+            border-style: none;
+            box-shadow: 0 3px 0 #05051a9d;
+        }
+
+    button:hover{
+                box-shadow: 0 2px 0 #121052c2;
+                transform: translateY(2px);
+                background-color: #9893d6;
+    }
+
+    #introduction {
+        text-align: left;
+        margin-left: 30px;
+        max-width: 500px;
+    }
+
+   .sub-t{
+        font-size: 40px;
+        color: #AC99FF;
+        text-align: left;
+        margin-left: 30px;
+        max-width: 500px;
+    }
+
+    .smaller-sub-t{
+        font-size: 25px;
+        color: #AC99FF;
+    }
+
+    #project-folders{
+        margin-left: auto;
+        max-width: 400px;
+    }
+
+ .folder{
+        background-color:#F2D482;
+        background: linear-gradient(180deg,#F2D482 0, #FAA259 100%);
+        list-style: none;
+        padding:10px;
+        height:20px;
+    }
+
+.folder:hover{
+                transform: translateY(2px);
+                background: linear-gradient(180deg,#c6ad67 0, #ca8044 100%);
+}
+
+#project-1{
+    border-top-left-radius: 5px;
+}
+
+#project-2{
+    border-top-left-radius: 5px;
+}
+
+#project-3{
+    padding-bottom:300px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+/* dark overlay */
+#overlay{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.6);
+  display:none;
+  z-index: 50;
+}
+
+/* modal container */
+.folder-modal{
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  display:none;
+  z-index: 100;
+}
+
+/* make popup folders bigger than your nav ones */
+.popup{
+  position: relative;
+  margin-top: 20px; /* gives space for tabs */
+    height: auto !important;
+  min-height: 500px;
+  width: 900px;
+  padding: 25px;
+  background: #F2D482;
+}
+
+.popup:hover {
+    background: #F2D482;
+}
+
+/* tab container */
+.tabs1{
+  position: absolute;
+  top: -40px;
+  left: 15px;
+  display: flex;
+  gap: 6px;
+}
+
+/* hide all content by default */
+.tab1-content{
+  display: none;
+}
+
+/* show active one */
+.tab1-content.active{
+  display: block;
+}
+
+/* individual tabs */
+.tab1{
+cursor: pointer;
+  padding: 5px 10px;
+  width: 150px;
+  height: 30px;
+  background: linear-gradient(180deg,#c6ad67 0, #ca8044 100%);
+  border-radius: 4px 4px 0 0;
+  font-size: 20px;
+  text-align: center;
+  color:#3d3c63;
+}
+
+/* active tab (front one) */
+.tab1.active{
+background: #F2D482;
+color:#121052;
+  height: 30px;
+  transform: translateY(2px);
+}
+
+/* close button */
+.close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+/* optional smooth animation */
+.folder-modal.active{
+  transform: translate(-50%, -50%) scale(1);
+  transition: 0.2s ease;
+}
+
+.about-section{
+display: flex;
+  align-items: center;   /* vertically aligns nicely */
+  justify-content: space-between;
+  gap: 20px;
+  margin:100px;
+}
+
+#about-txt{
+        text-align: left;
+        margin-left: 100px;
+        max-width: 500px;
+}
+
+#about-img{  
+    width: 300px;
+    margin-right: 60px;
+}
+
+.exp{
+    display: flex;
+  align-items: center;   /* vertically aligns nicely */
+  justify-content: space-between;
+  gap: 60px;
+  margin:50px;
+}
+
+.exp-date{
+        text-align: left;
+        margin-left: 400px;
+        max-width: 200px;
+}
+
+.exp-right{
+    max-width:750px;
+    margin-right: 450px;
+}
+
+.exp-description{
+        color:#B7B5F7;
+}
+
+.exp-company{
+        color:#B7B5F7;
+}
+
+.exp-location {
+    color:#F2D482;
+}
+
+#bottom-container{
+    display: flex;
+  align-items: center;   /* vertically aligns nicely */
+  justify-content: space-between;
+  gap: 60px;
+  margin:200px;
+}
+
+#skills{
+    margin-left:300px;
+}
+
+#programs{
+     margin-right:350px;
+}
+
+#bottom-container li {
+    margin:10px;
+
+}
+
+#bottom-container li:hover {
+       transform: translateY(2px);
+       color:#F2D482;
+
+}
+
+#contact-card{
+        display: flex;              /* THIS is the key */
+    align-items: center;       /* keeps things vertically aligned */
+    gap: 20px;                 /* space between image + text */
+
+    border-radius:5px;
+    background-color: #B7B5F7;
+    box-shadow: -9px 9px 0 #F2D482;
+    padding:50px;
+    max-width: 500px;
+    margin:auto;
+
+        transform: rotate(-3deg);  /* slight tilt */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+
+}
+
+#contact-card:hover {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow: -6px 12px 0 #F2D482;
+}
+
+#contact-card img{
+        width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 90px;
+    margin-left:50px;
+}
+
+#contact-txt {
+        flex: 1;
+    margin-right: 0; /* you don’t need this anymore */
+}
+.c-left-side{
+     color:#121052;
+}
+    </style>
+</head>
+<body>
+        <!--Navbar goes here-->
+
+    <div id="banner">
+        <button id="edit">Edit</button> 
+    </div>
+   
+    <div id="overlay" onclick="closeProject()"></div>
+
+<!--Text below image-->
+<h3 class="sub-t">Welcome to My Portfolio!</h3>
+<div id="introduction">
+    <p>Im Jane Doe,</p>
+    <p>a developer and designer</p>
+</div>
+
+<!--folders on right side-->
+    <div id="project-folders">
+    <h5 class="smaller-sub-t">Projects</h5>
+        <ul>
+            <li id="project-1" class="folder"><a href="#" onclick="openProject('modal1')" >Project 1</a></li>
+            <li id="project-2" class="folder"><a href="#" onclick="openProject('modal2')">Project 2</a></li>
+            <li id="project-3" class="folder"><a href="#" onclick="openProject('modal3')">Project 3</a></li>
+        </ul>
+    </div>
+
+<!--About-->
+<h3 class="sub-t">About</h3>
+
+<div class="about-section">
+<p id="about-txt">  Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+</p>
+
+<div id="about-img">
+<img src="" width="300" height="300">
+</div>
+</div>
+
+<!--Past Exp-->
+<h3 class="sub-t">Past Experience</h3>
+
+<div class="exp">
+    <p class="exp-date">2024-Current</p>
+        <div class="exp-right">
+            <p class="exp-name">UI/UX Developer</p>
+            <p class="exp-company">Apple</p>
+            <p class="exp-location">Orlando, FL</p>
+            <p class="exp-description"> Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.</p>
+        </div>    
+</div>
+
+<div class="exp">
+    <p class="exp-date">2022-2023</p>
+        <div class="exp-right">
+            <p class="exp-name">UI/UX Designer</p>
+            <p class="exp-company">Duolingo</p>
+            <p class="exp-location">Miami, FL</p>
+            <p class="exp-description"> Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.</p>
+        </div>
+</div>
+<!--Skills-->
+
+<div id="bottom-container">
+<div id="skills">
+    <h3 class="sub-t">Skills</h3>
+        <ul>
+            <li>HTML/CSS</li>
+            <li>Javascript</li>
+            <li>JQuery</li>
+            <li>C#</li>
+        </ul>
+</div>
+
+<!--Programs-->
+<div id="programs">
+    <h3 class="sub-t">Programs</h3>
+        <ul>
+            <li>Figma</li>
+            <li>GitHub</li>
+            <li>Visual Studio</li>
+            <li>Unity</li>
+        </ul>
+</div>
+</div>
+
+    <h3 class="sub-t">Contact</h3>
+    <div id="contact-card">
+         <img src="images/blank_avatar.png" width="100px" height="100px">
+        <div id="contact-txt">     
+        <p class="c-left-side">Email</p>
+        <p class="c-right-side">thisisanemail@gmail.com </p>
+
+        <p class="c-left-side">Linkden</p>
+        <p class="c-right-side">@JaneDoe </p>
+
+        <p class="c-left-side">Handshake</p>
+        <p class="c-right-side">@JaneDoe </p>
+        </div>
+    </div>
+
+<!--Project 1-->
+<div id="modal1" class="folder-modal">
+  <div class="popup">
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(event, 'overview1')">Overview</div>
+      <div class="tab" onclick="switchTab(event, 'process1')">Process</div>
+      <div class="tab" onclick="switchTab(event, 'solution1')">Solution</div>
+      <div class="tab" onclick="switchTab(event, 'impact1')">Impact</div>
+    </div>
+
+    <span class="close" onclick="closeProject()">✕</span>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content active" id="overview1">
+      <h2>Overview</h2>
+      <p>short summary, tools, role</p>
+    </div>
+
+    <div class="tab-content" id="process1">
+      <h2>Process</h2>
+      <p>research, sketches, iterations</p>
+    </div>
+
+    <div class="tab-content" id="solution1">
+      <h2>Solution</h2>
+      <p>final product, features</p>
+    </div>
+
+    <div class="tab-content" id="impact1">
+      <h2>Impact</h2>
+      <p>results + what you learned</p>
+    </div>
+
+  </div>
+</div>
+
+<!--Project 2-->
+<div id="modal2" class="folder-modal">
+  <div class="popup">
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(event, 'overview2')">Overview</div>
+      <div class="tab" onclick="switchTab(event, 'process2')">Process</div>
+      <div class="tab" onclick="switchTab(event, 'solution2')">Solution</div>
+      <div class="tab" onclick="switchTab(event, 'impact2')">Impact</div>
+    </div>
+
+    <span class="close" onclick="closeProject()">✕</span>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content active" id="overview2">
+      <h2>Overview</h2>
+      <p>short summary, tools, role</p>
+    </div>
+
+    <div class="tab-content" id="process2">
+      <h2>Process</h2>
+      <p>research, sketches, iterations</p>
+    </div>
+
+    <div class="tab-content" id="solution2">
+      <h2>Solution</h2>
+      <p>final product, features</p>
+    </div>
+
+    <div class="tab-content" id="impact2">
+      <h2>Impact</h2>
+      <p>results + what you learned</p>
+    </div>
+
+  </div>
+</div>
+
+<!--Proejct 3-->
+<div id="modal3" class="folder-modal">
+  <div class="popup">
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(event, 'overview3')">Overview</div>
+      <div class="tab" onclick="switchTab(event, 'process3')">Process</div>
+      <div class="tab" onclick="switchTab(event, 'solution3')">Solution</div>
+      <div class="tab" onclick="switchTab(event, 'impact3')">Impact</div>
+    </div>
+
+    <span class="close" onclick="closeProject()">✕</span>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content active" id="overview3">
+      <h2>Overview</h2>
+      <p>short summary, tools, role</p>
+    </div>
+
+    <div class="tab-content" id="process3">
+      <h2>Process</h2>
+      <p>research, sketches, iterations</p>
+    </div>
+
+    <div class="tab-content" id="solution3">
+      <h2>Solution</h2>
+      <p>final product, features</p>
+    </div>
+
+    <div class="tab-content" id="impact3">
+      <h2>Impact</h2>
+      <p>results + what you learned</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openProject(id){
+  document.getElementById("overlay").style.display = "block";
+
+  const modal = document.getElementById(id);
+  modal.style.display = "block";
+
+  setTimeout(() => {
+    modal.classList.add("active");
+  }, 10);
+}
+
+function closeProject(){
+  document.getElementById("overlay").style.display = "none";
+
+  const modals = document.querySelectorAll(".folder-modal");
+  modals.forEach(m => {
+    m.style.display = "none";
+    m.classList.remove("active");
+  });
+}
+
+function switchTab(event, tabId){
+
+  // find the current popup (so multiple modals won’t conflict later)
+  const popup = event.target.closest(".popup");
+
+  // remove active from all tabs
+  const tabs = popup.querySelectorAll(".tab");
+  tabs.forEach(tab => tab.classList.remove("active"));
+
+  // hide all content
+  const contents = popup.querySelectorAll(".tab-content");
+  contents.forEach(c => c.classList.remove("active"));
+
+  // activate clicked tab
+  event.target.classList.add("active");
+
+  // show correct content
+  popup.querySelector("#" + tabId).classList.add("active");
+}
+</script>
+
+
+</body>
+</html>
